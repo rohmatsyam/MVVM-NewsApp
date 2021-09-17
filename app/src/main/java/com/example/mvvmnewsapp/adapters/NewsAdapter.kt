@@ -11,7 +11,7 @@ import com.example.mvvmnewsapp.models.Article
 
 class NewsAdapter:RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
     private lateinit var binding: ItemArticlePreviewBinding
-    inner class ArticleViewHolder(binding:ItemArticlePreviewBinding):RecyclerView.ViewHolder(binding.root)
+    inner class ArticleViewHolder(itemView:ItemArticlePreviewBinding):RecyclerView.ViewHolder(itemView.root)
 
     private val differCallback = object : DiffUtil.ItemCallback<Article>(){
         override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
@@ -23,10 +23,10 @@ class NewsAdapter:RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
         }
     }
 
-    private val differ = AsyncListDiffer(this,differCallback)
+    val differ = AsyncListDiffer(this,differCallback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
-        val binding = ItemArticlePreviewBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        binding = ItemArticlePreviewBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ArticleViewHolder(binding)
     }
 
