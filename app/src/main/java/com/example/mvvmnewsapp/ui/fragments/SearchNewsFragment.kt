@@ -5,16 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.mvvmnewsapp.databinding.FragmentBreakingNewsBinding
+import com.example.mvvmnewsapp.databinding.FragmentSearchNewsBinding
 
-class BreakingNewsFragment:Fragment() {
-    private lateinit var binding: FragmentBreakingNewsBinding
+class SearchNewsFragment:Fragment() {
+    private lateinit var binding: FragmentSearchNewsBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentBreakingNewsBinding.inflate(layoutInflater)
+        binding = FragmentSearchNewsBinding.inflate(layoutInflater)
         return binding.root
     }
 }
