@@ -16,18 +16,18 @@ abstract class ArticleDatabase:RoomDatabase() {
     companion object {
         @Volatile
         private var INSTANCE:ArticleDatabase? = null
+        private val LOCK = Any()
 
-        fun getDatabase(context: Context):ArticleDatabase{
-            synchronized(this){
-                return INSTANCE ?: Room.databaseBuilder(
-                    context.applicationContext,
-                    ArticleDatabase::class.java,
-                    "article_db"
-                ).build().also {
-                    INSTANCE = it
-                }
-            }
+        operator fun invoke(context: Context) = INSTANCE ?: synchronized(LOCK){
+            INSTANCE ?: createDatabase(context).also { INSTANCE = it }
         }
+
+        private fun createDatabase(context: Context) =
+            Room.databaseBuilder(
+                context.applicationContext,
+                ArticleDatabase::class.java,
+                "article_db"
+            ).build()
 
     }
 }
