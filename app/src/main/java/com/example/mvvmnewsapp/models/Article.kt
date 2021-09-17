@@ -1,7 +1,9 @@
-package com.example.mvvmnewsapp
+package com.example.mvvmnewsapp.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverter
+import com.example.mvvmnewsapp.db.Converters
 
 @Entity(tableName = "articles")
 data class Article(
