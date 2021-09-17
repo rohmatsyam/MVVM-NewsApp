@@ -2,8 +2,7 @@ package com.example.mvvmnewsapp.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverter
-import com.example.mvvmnewsapp.db.Converters
+import java.io.Serializable
 
 @Entity(tableName = "articles")
 data class Article(
@@ -17,4 +16,4 @@ data class Article(
     val title: String,
     val url: String,
     val urlToImage: String
-)
+):Serializable
